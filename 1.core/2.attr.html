@@ -1,0 +1,25 @@
+<!--2022.08.25 attr-->
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    console.log($('a').attr('href')) 
+    
+    $('a').attr('href', 'https://www.daum.net/')
+    
+    $('a').attr({
+        href: 'https://jquery.com',
+        target: '_blank'
+    })
+
+    $('a').removeAttr('target')
+})
+</script>
+
+<a href='https://www.google.co.kr/'>google</a>
+<a href='https://www.naver.com/'>naver</a>
+
+<!-- 일단은 작업 대상(a)을 먼저 찾아야함-->
+<!-- 5번째 줄만 하면 attr을 썼을 경우 원소가 두개인 경우엔 0번째가 우선-->
+<!-- 7번째 줄까지 실행하면, 구글과 네이버 다 다음으로 링크를 바꿈 -->
+<!-- 9번째 줄 n개의 atrribute를 라이트,,? target은 새 창으로 띄워줌-->
+<!-- 14번째 줄은 target을 없애줘서 현재창에서 페이지가 뜨게함-->

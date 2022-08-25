@@ -1,0 +1,35 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    console.log($('h1').html())
+
+    $('footer').html('<mark>foot</mark>')
+    console.log($('footer').html())
+    
+    console.log($('header').find('h1').eq(1).html())
+    $('header').find('h1').eq(1).html('<hr>')
+
+    $('ul').find('li').eq(2).html('index: 2').end()
+        .eq(3).html('index: 3').end()
+        .eq(4).html('index: 4')
+})
+</script>
+
+<header>
+    <h1><b>hello</b></h1>
+    <h1>world</h1>
+</header>
+
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<footer></footer>
+
+<!-- 4열은 첫번째만 리턴-->
+<!-- 6열은 footer는 다 리턴-->
+<!-- 10열은 world가 hr로 바뀜, end는 chaining를 끝낸단 의미고, find의 li를 리턴하는 개념-->

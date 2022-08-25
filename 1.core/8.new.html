@@ -1,0 +1,41 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    $('<div>').appendTo('hr')
+    
+    $('<div>', {
+        html: '<p class="center">red</p>',
+        class: 'red'
+    }).appendTo('hr')
+})
+</script>
+
+<style>
+    div {
+        background-color: orange;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 2.5rem;
+    }
+    
+    hr {
+        border: .1rem solid;
+    }
+
+    .red {
+        background: red;
+        position: relative;
+    }
+
+    p.center{
+        position: absolute;
+        left: 1.7rem;
+        top: 1rem;
+        font-weight: bold;
+    }
+
+</style>
+
+<hr>
+
+<!-- 객체를 찾는(selector) 용도뿐만 아니라 '<>'를 통해 만드는 용도로도 사용한다. -->

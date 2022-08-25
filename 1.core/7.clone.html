@@ -1,0 +1,26 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    $('div').clone().appendTo('hr')
+})
+</script>
+
+<style>
+div {
+    background-color: orange;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+}
+
+hr {
+    border: .1rem solid;
+}
+</style>
+
+<div></div>
+<div></div>
+<hr>
+<hr>
+
+<!-- 쌍둥이 녀석이 appendTo가 됨 -->
