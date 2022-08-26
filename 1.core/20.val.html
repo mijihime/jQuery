@@ -1,0 +1,52 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    // 과제: text 변수에, <input type='text'>를 찾아서 담아라.
+    let text = $('form :text')
+    console.log(text)
+    console.log('|' + text.val() + '|')
+   
+    text.val(' world ')
+    // 과제: text의 value를 trim해서, text에 저장하라.
+    text.val(text.val().trim())
+    console.log('|' + text.val() + '|')
+
+    text.val((i, v) => `hello ${v}`)
+
+    $(':checked').each((i, e) => console.log(e))
+    // 과제: value 3개를 출력하라.
+    /*
+    night
+    mountain
+    apple
+    */
+    $(':checked').each((i, e) => console.log($(e).val()))
+    $(':checked').each((i, e) => console.log(e.value))
+
+    //
+    $('input').val(['noon', 'sea', 'banana']) // 직접 선택하기 (아래걸론 바나나는 안됨)
+    $('#fruit').val('banana') // select는 이렇게 설정
+    $('#greens').val(['cucumber', 'carrot'])
+})
+</script>
+
+<form>
+    <input type='text' value=' hello '/><br>
+
+    <input type='checkbox' value='night' checked/>밤
+    <input type='checkbox' value='noon'/>낮 <br>
+
+    <input type='radio' value='mountain' checked/>산
+    <input type='radio' value='sea'/>바다<br>
+
+    <select id='fruit'>
+        <option>apple</option>
+        <option>banana</option>
+    </select>
+
+    <select id='greens' multiple>
+        <option>cucumber</option>
+        <option>cabbage</option>
+        <option>carrot</option>
+    </select>
+</form>

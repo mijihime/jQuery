@@ -1,0 +1,29 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    $('li').map((i, e) => console.log(i, e))
+
+    let collection = $('li').map((i, e) => e. id)
+    console.log(collection) //S.fn.init(3) ['a', 'b', 'c', prevObject: S.fn.init(3)]
+    console.log(collection.get())
+    
+    // 과제: 위 get() return value를 'abc' serializing하라(string value로 변환하라)
+    console.log(collection.get().join(''))
+
+    //
+    $.map(collection.get(), (e, i) => console.log(e, i))
+
+    let array = $.map({name: 'adelia', age: 20}, (v, k) => v)
+    console.log(array)
+})
+</script>
+
+<ul>
+    <li id='a'>A</li>
+    <li id='b'>B</li>
+    <li id='c'>C</li>
+</ul>
+
+<!-- 6열 map뒤가 가공하는 내용 -->
+<!-- 8열 get은 index를 주지않고('()안에 뭐 넣는거') collection을 array로 만들어줌 -->
+<!-- 14열에선 e, i 순으로 한다. 16열도 마찬가지-->

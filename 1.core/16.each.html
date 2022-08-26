@@ -3,13 +3,19 @@
 <script>
 $(() => {
     $('li').each((i, e) => console.log(i, e))
+
+    $('li').each((i, e) => console.log(i, e.id))
     /*
-    0 'aa'
+    0 'a'
     1 'b'
     2 'c'
     */
-   let arr = ['a', 'b', 'c']
-    $('li').each((i, e) => console.log(i, $('li id').text()))
+    
+    jQuery.each([1, 2, 3, 4], (i, e) => console.log(`[${i}]:`, e))
+
+    $.each($('li').toArray(), (i, e) => console.log(i, e))
+
+    $.each({name: 'adelia', age: 20}, (k, v) => console.log(k, ':', v))
 })
 </script>
 
@@ -18,3 +24,6 @@ $(() => {
     <li id='b'>B</li>
     <li id='c'>C</li>
 </ul>
+
+<!-- collection을 얻고 Array를 변환하기 위해 toArray-->
+<!-- 18열은 js에서의 iterating -->
