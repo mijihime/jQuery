@@ -1,0 +1,22 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    console.log($('.1').children())
+    console.log($('.1').find('div'))
+})
+</script>
+
+<pre>
+    <div class='1'>
+        <div class='2-1'>
+            <div class='3'>
+                <div class='4'></div>
+            </div>
+        </div>
+        <div class='2-2'></div>
+        <div class='2-3'></div>
+    </div>
+</pre>
+
+<!-- 4열은 직계자식만 2-1, 2-2, 2-3 -->
+<!-- 5열은 1미만 죄다, 제일 많이 쓰이게 됨-->

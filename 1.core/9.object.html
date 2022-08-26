@@ -1,0 +1,21 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    let $div1 = $('div')   
+    let $div2 = $div1.eq(0)
+    let div3 = $div1.get(0)
+    console.log($div1, $div2, div3)
+    console.log(typeof $div1, typeof $div2, typeof div3)
+
+    let $div11 = $('div')
+    let $div22 = $div11.eq(0)
+    let div33 = $div11.get(0)
+    console.log($div1 == $div11, $div2 == $div22, div3 == div33)
+})
+</script>
+
+<div></div>
+
+<!-- 6열은 $가 붙지 않아 jquery를 return할 수 없음-->
+<!-- 4열이든 10열이든 15열을 가지고 하는건데 과연 같은 값이 나올까
+        -> 매번 새로운 객체를 만들기 때문에 false가 나옴. 근데 같은거라 생각하면 쓰랬나..-->

@@ -1,0 +1,20 @@
+<!-- 2022-08-26 -->
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    $('li').each((i, e) => console.log(i, e))
+    /*
+    0 'a'
+    1 'b'
+    2 'c'
+    */
+   let arr = ['a', 'b', 'c']
+    $('li').each((i, e) => console.log(i, $(this).append()))
+})
+</script>
+
+<ul>
+    <li id='a'>A</li>
+    <li id='b'>B</li>
+    <li id='c'>C</li>
+</ul>

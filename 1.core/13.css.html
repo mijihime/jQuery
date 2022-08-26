@@ -1,0 +1,18 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    console.log($('h1').css('font-size'))
+    console.log($('h1.big').css('font-size', '3rem'))
+    $('h1.big').css({
+        'font-size': '4rem',
+        color: 'red'
+    })
+})
+</script>
+
+<h1>HELLO</h1>
+<h1 class='big'>WORLD</h1>
+
+<!-- h1은 가장 큰 사이즈, 기준의 2배 32px -->
+<!-- 5열 실행 후 world가 기준의 3배로 크게만듬 -->
+<!-- key는 작은따옴표 안써도 되는데 -같은게 들어갈 경우엔 써줌 -->

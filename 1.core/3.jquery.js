@@ -17,7 +17,7 @@ collection에는 li를 담는것이고, li가 n개면 n개를 다 담는다.
 </div>
 */
 
-$('a.external:first') //딱봐도 첫번째
+$('a.external:first') //딱봐도 첫번째 반대는 last겠죠
 /*
 <a class='external'></a>
 <a class='external'></a>
@@ -44,7 +44,7 @@ $('div:gt(1)') // 1보다 크다.
 
 $('div:animated') // 움직이고 있는거
 
-$('a[rel$="thinger"]')
+$('a[rel$="thinger"]') //단어의 끝 
 /*
 <a rel='do-nothinger'></a>
 <a rel='so-thinger'></a>

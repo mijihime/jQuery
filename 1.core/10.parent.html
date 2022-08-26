@@ -1,0 +1,32 @@
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    console.log($('.4').parent())
+
+    console.log($('.4').parents())
+
+    console.log($('.4').parents('div'))
+
+    console.log($('.4').parentsUntil('div.1'))
+
+    console.log($('.4').closest('div'))
+})
+</script>
+
+<pre>
+    <div class='1'>
+        <div class='2-1'>
+            <div class='3'>
+                <div class='4'></div>
+            </div>
+        </div>
+        <div class='2-2'></div>
+        <div class='2-3'></div>
+    </div>
+</pre>
+
+<!-- 4열은 상위 하나 -->
+<!-- 6열은 상위 모두 -->
+<!-- 8열은 div부모만 -->
+<!-- 10열은 div.1 미만 -->
+<!-- 12열은 div마지막(나포함)-->
