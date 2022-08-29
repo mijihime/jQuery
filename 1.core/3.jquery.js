@@ -35,7 +35,7 @@ $('tr:odd') //홀수 - (0번째부터 시작)첫번째 세번째
 
 $('div:visivle') //짝수
 
-$('div:gt(1)') // 1보다 크다.
+$('div:gt(1)') // 1보다 크다. <-> lt
 /*
 <div></div>
 <div></div>
@@ -100,7 +100,7 @@ $('form :selected')
 <select><option></option></select>
 */
 
-$('form :enabled')
+$('form :enabled') //객체가 활성화 된 걸 찾음
 $('form :disabled')
 
 $('form :file') // <input type='file'/>
