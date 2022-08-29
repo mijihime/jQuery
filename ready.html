@@ -1,17 +1,16 @@
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 <script>
 $(() => {
-    let $div1 = $('div')
-    let $div2 = $div1.eq(0)
-    let div3 = $div1.get(0)
-    console.log($div1, $div2, div3)
-    console.log(typeof $div1, typeof $div2, typeof div3)
-
-    let $div11 = $('div')
-    let $div22 = $div11.eq(0)
-    let div33 = $div11.get(0)
-    console.log($div1 == $div11, $div2 == $div22, div3 == div33)
+        $( 'button' ).click( function() {
+          $( ':text' ).animate( {
+            
+          } );
+        } );
 })
 </script>
 
-<div></div>
+<form>
+    <input type='text' name='userName' placeholder='사용자명'/><span></span><br>
+    <input type='text' name='userAge' placeholder='애니'/><span></span><br>
+    <button type='button'>submit</button>
+</form>
