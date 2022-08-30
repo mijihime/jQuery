@@ -1,16 +1,14 @@
 <script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
 <script>
 $(() => {
-        $( 'button' ).click( function() {
-          $( ':text' ).animate( {
-            
-          } );
-        } );
+  $(':password').keydown(e => {
+    if(e.keyCode == 13) $('form').submit
+  })
 })
 </script>
 
 <form>
-    <input type='text' name='userName' placeholder='사용자명'/><span></span><br>
-    <input type='text' name='userAge' placeholder='애니'/><span></span><br>
-    <button type='button'>submit</button>
+  <input type="text" name="id"/>
+  <input type="password" name="password"/>
+  <input type="submit">
 </form>
