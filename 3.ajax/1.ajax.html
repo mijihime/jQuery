@@ -1,0 +1,23 @@
+<!-- 2022-08-30 -->
+<script src='https://code.jquery.com/jquery-3.6.0.min.js'></script>
+<script>
+$(() => {
+    $('button').click(() => {
+        $.ajax({
+            url: '01.data.json',
+            data: {id: 'yellow'},
+            type: 'get',
+            dataType: 'json',
+            success: (data, status, xhr) => {
+                $('<h3>').text(data.userName)
+            }
+        })
+    })
+})
+</script>
+
+<button type='button'>click</button>
+
+<!-- Asynchrous Javascript And Xml -->
+<!-- ajax는 client가 사용 -->
+<!-- 7~10열은 server가 client에게 request-->
