@@ -20,6 +20,7 @@ $(() => {
     mountain
     apple
     */
+
     $(':checked').each((i, e) => console.log($(e).val()))
     $(':checked').each((i, e) => console.log(e.value))
 
@@ -27,6 +28,7 @@ $(() => {
     $('input').val(['noon', 'sea', 'banana']) // 직접 선택하기 (아래걸론 바나나는 안됨)
     $('#fruit').val('banana') // select는 이렇게 설정
     $('#greens').val(['cucumber', 'carrot'])
+
 })
 </script>
 
