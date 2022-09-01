@@ -63,16 +63,27 @@
             else if(0 == $('#hireDate').val()) {
                 alert('입사일을 입력하세요.')
             }
+            else{
+                $("td").find("input[type=radio]").each(function(){
+                    if($(this).is(':checked')==true){
+                        var txt_value = $("#laborerName").val();
+                        if(txt_value != ""){
+                            $(this).closest("tr").find("td").eq(2).text(txt_value).end()
+                                                    .eq(3).text( `${$("#hireDate").val()}`);
+                        }
+                    }
+                });
+            }
 
-            else if($(':checked').find('td').eq(1).val() == model.id) {
-                    model.laborerName = $("#laborerName").val();
-                    model.hireDate = $("#hireDate").val();
-                } listOutPrint();
         })
-    
-
         $('#delete').click(() => {
-
+            $('#del').click(() => {
+                $("td").find("input[type=radio]").each(function(){
+                    if($(this).is(':checked')==true){
+                        $(this).closest("tr").remove();
+                    }
+                });
+            })
         })
     })
     
@@ -137,7 +148,7 @@
             </div>
             <div class='modal-footer'>
                 <button type='button' class='btn btn-secondary' data-dismiss='modal'>아니오</button>
-                <button type='button' class='btn btn-primary'>예</button>
+                <button type='button' class='btn btn-primary' data-dismiss='modal' id='del'>예</button>
             </div>
         </div>
     </div>
