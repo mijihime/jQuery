@@ -6,7 +6,7 @@ $(() => {
         //$("input[name='userName']").val() && 
         if($(':text').val()) $('form').submit()
         // 과제: '사용자명을 입력하세요.'error message를 <span>에 출력하라.
-        //else $('span').append('<mark>사용자명을 입력하세요.</mark>')
+        else $('span').append('<mark>사용자명을 입력하세요.</mark>')
         //else $('span').html('<makr>사용자명을 입력하세요.</mark>')
         //else $('span').text('사용자명을 입력하세요.')
     
@@ -15,10 +15,12 @@ $(() => {
 
         // 과제: 에러메세지를 빨간색으로 출력하려. 그리고,
         //        userName filed의 border를 점선으로 바꿔라.
+        /*
         else {
             $('span').text('사용자명을 입력하세요.').css('color', 'red')
-            $(' :text').css('border', 'dotted')
+            $(':text').css('border', 'red .1rem dotted')
         }
+        */
     })
 })
 </script>
