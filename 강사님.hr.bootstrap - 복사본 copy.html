@@ -70,22 +70,24 @@
             }
 
             else if(0 == $('#hireDate').val()) {
-                $('#delLaborerModal').modal().find('p').html('입사일을 입력하세요.').end()
+                $('#delLaborerModal').modal().find('#textModal').html('<p id="dateModal">입사일을 입력하세요.</p>').end()
                                         .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
             }
             else{
                 $("td").find("input[type=radio]").each(function(){
                     if($(this).is(':checked') == true){
                         var txt_value = $("#laborerName").val();
+                        let i = $(this).closest('tr').eq(1).val()
                         if(txt_value != ""){
-                            $(this).closest("tr").find("td").eq(2).html(txt_value).end()
-                                                    .eq(3).html( `${$("#hireDate").val()}`);
+                            model[i].laborerName = $(this).closest("tr").find("td").eq(2).html(txt_value)
+                            model[i].hireDate = $(this).closest("tr").find("td").eq(3).html( `${$("#hireDate").val()}`);
                         }
                         else{
                             close();
                         }
                     }        
                 });
+                listOutPrint();
             }
 
         })
