@@ -45,7 +45,7 @@
         $('#add').click(() => {
 
             if (0 == $('#laborerName').val().length) {
-                $('#delLaborerModal').modal().find('p').html('노동자명을 입력하세요.').end()
+                $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자명을 입력하세요.</p>').end()
                                                 .find('#no').remove().end()
                                                 .find('#yes').html('닫기');
             }
@@ -60,33 +60,40 @@
                 model.unshift(new Laborer($("#laborerName").val(), $("#hireDate").val()));
                 listOutPrint();
                 }
+            
         })
 
         $('#update').click(() => {
             if (0 == $('#laborerName').val().length) {
-                $('#delLaborerModal').modal()
+                $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자명을 입력하세요.</p>').end()
+                .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
             }
 
             else if(0 == $('#hireDate').val()) {
                 $('#delLaborerModal').modal().find('p').html('입사일을 입력하세요.').end()
-                                                .find('#no').remove().end()
-                                                .find('#yes').html('닫기');
+                                        .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
             }
             else{
                 $("td").find("input[type=radio]").each(function(){
-                    if($(this).is(':checked')==true){
+                    if($(this).is(':checked') == true){
                         var txt_value = $("#laborerName").val();
                         if(txt_value != ""){
                             $(this).closest("tr").find("td").eq(2).html(txt_value).end()
                                                     .eq(3).html( `${$("#hireDate").val()}`);
+                        }
+                        else{
+                            close();
                         }
                     }        
                 });
             }
 
         })
-        
+
         $('#delete').click(() => {
+            $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자를 삭제하시겠습니까?</p>').end()
+                                                .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='no'>아니오</button> <button type='button' class='btn btn-primary' data-dismiss='modal' id='yes'>예</button>")
+                
                 $('#yes').click(() => {
                     $("td").find("input[type=radio]").each(function(){
                     if($(this).is(':checked')==true){
@@ -154,11 +161,10 @@
                 </button>
             </div>
             <div class='modal-body' id='textModal'>
-                <p>노동자를 삭제하시겠습니까?</p>
+
             </div>
             <div class='modal-footer' id='buttonModal'>
-                <button type='button' class='btn btn-secondary' data-dismiss='modal' id='no'>아니오</button>
-                <button type='button' class='btn btn-primary' data-dismiss='modal' id='yes'>예</button>
+               
             </div>
         </div>
     </div>
