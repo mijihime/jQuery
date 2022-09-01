@@ -37,8 +37,9 @@
         }
 
     }
-    
+
     $(() => {
+
         listOutPrint();
 
         $('#add').click(() => {
@@ -62,17 +63,14 @@
         })
 
         $('#update').click(() => {
-
             if (0 == $('#laborerName').val().length) {
-                $('#delLaborerModal').modal().find('p').html('노동자명을 입력하세요.').end()
-                                                .find('#no').remove().end()
-                                                .find('#yes').html('닫기');
+                $('#delLaborerModal').modal()
             }
 
             else if(0 == $('#hireDate').val()) {
                 $('#delLaborerModal').modal().find('p').html('입사일을 입력하세요.').end()
                                                 .find('#no').remove().end()
-                                                .find('#yes').html('닫기');;
+                                                .find('#yes').html('닫기');
             }
             else{
                 $("td").find("input[type=radio]").each(function(){
@@ -82,12 +80,12 @@
                             $(this).closest("tr").find("td").eq(2).html(txt_value).end()
                                                     .eq(3).html( `${$("#hireDate").val()}`);
                         }
-                    }
+                    }        
                 });
             }
 
         })
-
+        
         $('#delete').click(() => {
                 $('#yes').click(() => {
                     $("td").find("input[type=radio]").each(function(){
@@ -146,6 +144,7 @@
     </div>
 </div>
 
+
 <div class='modal fade' tabindex='-1' id='delLaborerModal'>
     <div class='modal-dialog'>
         <div class='modal-content'>
@@ -164,4 +163,5 @@
         </div>
     </div>
 </div>
+
 </body>
