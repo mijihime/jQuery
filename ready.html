@@ -191,3 +191,18 @@ table, th, td {
     </div>
 </body>
 </html>
+
+
+else{
+    $("td").find("input[type=radio]").each(function(){
+        if($(this).is(':checked') == true){
+            var txt_value = $("#laborerName").val();
+            let i = $(this).closest('tr').eq(1).val()
+            if(txt_value != ""){
+                model[i].laborerName = $(this).closest("tr").find("td").eq(2).html(txt_value)
+                model[i].hireDate = $(this).closest("tr").find("td").eq(3).html( `${$("#hireDate").val()}`);
+            }
+            else{
+                close();
+            }
+        } 

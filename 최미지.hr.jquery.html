@@ -8,7 +8,7 @@
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css'/>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'/>
 <script>
-    var model = new Array(0);
+    var laborerList = new Array(0);
 
     let cnt = 1;
     var Laborer = function(_name, _hireDate) {
@@ -18,91 +18,102 @@
     }
 
     var listOutPrint = function() {
-        if (model.length < 1) {
+        if (laborerList.length < 1) {
             $("#laborerList").html("<tr><td class='text-center' colspan='4'>노동자가 없습니다.</td></tr>");
         } 
         
         else {
             $("#laborerList").html("");
-            $(model).each(
+            $(laborerList).each(
                 function(index, item) {
                     $("#laborerList").append(
                         "<tr><td>" + "<input type='radio' name='choice'/>"
-                        + "</td><td>" + item.id
+                        + "</td><td id='id'>" + item.id
                         + "</td><td>" + item.laborerName
                         + "</td><td>" + item.hireDate
                         + "</td></tr>")
                 }
             );
+      
         }
 
     }
+    
+    var emptyName = function() {
+        $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자명을 입력하세요.</p>').end()
+                                        .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
+    }
+
+    var emptyDate = function() {
+        $('#delLaborerModal').modal().find('#textModal').html('<p id="dateModal">입사일을 입력하세요.</p>').end()
+                                        .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
+    }
 
     $(() => {
-
         listOutPrint();
-
-        $('#add').click(() => {
+        
+        $('#addLaborer').click(() => {
 
             if (0 == $('#laborerName').val().length) {
-                $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자명을 입력하세요.</p>').end()
-                                                .find('#no').remove().end()
-                                                .find('#yes').html('닫기');
+                emptyName()
             }
 
             else if(0 == $('#hireDate').val()) {
-                $('#delLaborerModal').modal().find('p').html('입사일을 입력하세요.').end()
-                                                .find('#no').remove().end()
-                                                .find('#yes').html('닫기');;
+               emptyDate()
             }
             
             else {
-                model.unshift(new Laborer($("#laborerName").val(), $("#hireDate").val()));
+                laborerList.unshift(new Laborer($("#laborerName").val(), $("#hireDate").val()));
                 listOutPrint();
-                }
-            
+            }
+            $('#laborerName').val("")
+            $('#hireDate').val("")
         })
+        
 
-        $('#update').click(() => {
+
+        $('#fixLaborer').click(() => {
+
             if (0 == $('#laborerName').val().length) {
-                $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자명을 입력하세요.</p>').end()
-                .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
+               emptyName()
             }
 
             else if(0 == $('#hireDate').val()) {
-                $('#delLaborerModal').modal().find('#textModal').html('<p id="dateModal">입사일을 입력하세요.</p>').end()
-                                        .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>")
+                emptyDate()
             }
+
             else{
-                $("td").find("input[type=radio]").each(function(){
-                    if($(this).is(':checked') == true){
-                        var txt_value = $("#laborerName").val();
-                        let i = $(this).closest('tr').eq(1).val()
-                        if(txt_value != ""){
-                            model[i].laborerName = $(this).closest("tr").find("td").eq(2).html(txt_value)
-                            model[i].hireDate = $(this).closest("tr").find("td").eq(3).html( `${$("#hireDate").val()}`);
+                for(var i = 0; i <laborerList.length ; i++) {
+                    if($(':checked').closest('tr').find('#id').text() == laborerList[i].id) {
+                        laborerList[i].laborerName = $("#laborerName").val();
+                        laborerList[i].hireDate = $("#hireDate").val();
                         }
-                        else{
-                            close();
-                        }
-                    }        
-                });
+                    }
                 listOutPrint();
             }
-
+            $('#laborerName').val("")
+            $('#hireDate').val("")
         })
 
-        $('#delete').click(() => {
-            $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자를 삭제하시겠습니까?</p>').end()
+        $('#delLaborer').click(() => {
+            if($(':checked').length == 0){
+                $('#delLaborerModal').modal().find('#textModal').html('<p id="dateModal">선택된 노동자가 없습니다.</p>').end()
+                                        .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='close'>닫기</button>") 
+            }
+
+            else {
+                $('#delLaborerModal').modal().find('#textModal').html('<p id="nameModal">노동자를 삭제하시겠습니까?</p>').end()
                                                 .find('#buttonModal').html("<button type='button' class='btn btn-secondary' data-dismiss='modal' id='no'>아니오</button> <button type='button' class='btn btn-primary' data-dismiss='modal' id='yes'>예</button>")
-                
-                $('#yes').click(() => {
-                    $("td").find("input[type=radio]").each(function(){
-                    if($(this).is(':checked')==true){
-                        $(this).closest("tr").remove();
-                    }
-                });
-            })
+                    $('#yes').click(() => {
+                        for(var i = 0; i <laborerList.length ; i++) {
+                            if($(':checked').closest('tr').find('#id').text() == laborerList[i].id) {
+                                var s = laborerList.splice(i, 1);
+                    
+                            }
+                        } 
+                    listOutPrint();
+                })
+            }
         })
     })
     
@@ -128,14 +139,13 @@
                     </div>
                     <div class='col'>
                         <nav class='d-flex'>
-                            <button type='button' class='btn btn-success flex-fill mr-1' id='add'>
+                            <button type='button' class='btn btn-success flex-fill mr-1' id='addLaborer'>
                                 <i class='fas fa-plus'></i><span class='label d-none d-sm-inline'> 추가</span>
                             </button>
-                            <button type='button' class='btn btn-info flex-fill mr-1' id='update'>
+                            <button type='button' class='btn btn-info flex-fill mr-1' id='fixLaborer'>
                                 <i class='fas fa-edit'></i><span class='label d-none d-sm-inline'> 수정</span>
                             </button>
-                            <button type='button' class='btn btn-warning flex-fill'
-                                data-toggle='modal' data-target='#delLaborerModal' id='delete'>
+                            <button type='button' class='btn btn-warning flex-fill' id='delLaborer'>
                                 <i class='fas fa-trash-alt'></i><span class='label d-none d-sm-inline'> 삭제</span>
                             </button>
                         </nav>
